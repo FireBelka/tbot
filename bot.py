@@ -1,6 +1,7 @@
 # handlers
-from tgbot.handlers.spam_command import anti_spam
+#from tgbot.handlers.spam_command import anti_spam
 from tgbot.handlers.user import any_user
+from tgbot.handlers.message_query import callback_inline
 
 # middlewares
 from tgbot.middlewares.antiflood_middleware import antispam_func
@@ -23,7 +24,8 @@ apihelper.ENABLE_MIDDLEWARE = True
 bot = TeleBot(config.TOKEN, num_threads=5)
 def register_handlers():
     bot.register_message_handler(any_user, commands=['start'], pass_bot=True)
-    bot.register_message_handler(anti_spam, commands=['spam'], pass_bot=True)
+    bot.register_message_handler(callback_inline, commands=['start'], pass_bot=True)
+
 
 register_handlers()
 
