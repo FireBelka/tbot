@@ -30,9 +30,6 @@ register_handlers()
 bot.register_middleware_handler(antispam_func, update_types=['message'])
 
 
-# custom filters
-bot.add_custom_filter(AdminFilter())
-
 def run():
     bot.infinity_polling()
 
