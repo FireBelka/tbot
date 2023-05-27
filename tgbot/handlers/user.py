@@ -15,19 +15,20 @@ def callback_inline(call, bot: TeleBot):
     try:
         if call.message:
             if call.data == 'flat':
-                item1 = types.InlineKeyboardButton("Flat", callback_data='flat')
-                markup.add(item1)
-                bot.send_message(call.message.chat.id, 'Вот и отличненько 😊', reply_markup=markup)             
+                markup = types.InlineKeyboardMarkup(row_width=1)
+                item1 = types.InlineKeyboardButton("New", callback_data='Flat_new')
+                item2 = types.InlineKeyboardButton("Old", callback_data='Flat_old')
+                markup.add(item1,item2)
+                bot.send_message(call.message.chat.id, 'Interior', reply_markup=markup)             
             elif call.data == 'cottage':
-                bot.send_message(call.message.chat.id, 'Бывает 😢')
+                bot.send_message(call.message.chat.id, 'Нет их в Беларуси')
+            elif call.data == 'Flat_new':
+                bot.send_message(call.message.chat.id, 'Однушка за почку')
+            elif call.data == 'Flat_old':
+                bot.send_message(call.message.chat.id, 'Сталинка с бабкой')    
+            else :
+                bot.send_message(call.message.chat.id, 'Alart! Alart! Palestine is under attack!')              
  
-            # remove inline buttons
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="😊 Как дела?",
-                reply_markup=None)
- 
-            # show alert
-            bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
-                text="ЭТО ТЕСТОВОЕ УВЕДОМЛЕНИЕ!!11")
  
     except Exception as e:
         print(repr(e))
