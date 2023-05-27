@@ -32,7 +32,7 @@ register_handlers()
 bot.register_middleware_handler(antispam_func, update_types=['message'])
 
 # query_handler
-bot.register_callback_query_handler(callback_inline,func=lambda call: True)
+bot.register_callback_query_handler(callback_inline,func=lambda call: True, pass_bot=True)
 
 
 def run():

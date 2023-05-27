@@ -11,7 +11,7 @@ def any_user(message: types.Message, bot: TeleBot):
     bot.send_message(message.chat.id, "Hi, {0.first_name}!\nI'm - <b>{1.first_name}</b>, bot.\nWhich type of house do you prefer".format(message.from_user, bot.get_me()),
         parse_mode='html', reply_markup=markup)
 
-def callback_inline(call):
+def callback_inline(call, bot: TeleBot):
     try:
         if call.message:
             if call.data == 'flat':
