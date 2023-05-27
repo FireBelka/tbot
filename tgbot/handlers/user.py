@@ -15,7 +15,9 @@ def callback_inline(call, bot: TeleBot):
     try:
         if call.message:
             if call.data == 'flat':
-                bot.send_message(call.message.chat.id, 'Вот и отличненько 😊')
+                item1 = types.InlineKeyboardButton("Flat", callback_data='flat')
+                markup.add(item1)
+                bot.send_message(call.message.chat.id, 'Вот и отличненько 😊', reply_markup=markup)             
             elif call.data == 'cottage':
                 bot.send_message(call.message.chat.id, 'Бывает 😢')
  
