@@ -46,10 +46,11 @@ def callback_inline(call, bot: TeleBot):
                 item8 = types.InlineKeyboardButton("Другое", callback_data=directions[7])
                 markup.add(item1,item2,item3,item4,item5,item6)
                 bot.send_message(call.message.chat.id, 'Замечательно, осталось выбрать направление', reply_markup=markup)
-            else :
+            elif call.data in directions:  
                 choise[2]=call.data
                 bot.send_message(call.message.chat.id, "Ваш выбор:\n{0} \n{1} \n{2}".format(choise[0],choise[1],choise[2])) 
-            #    bot.send_message(call.message.chat.id, 'Alart! Alart! Palestine is under attack!')              
+            else :             
+                bot.send_message(call.message.chat.id, 'Alart! Alart! Palestine is under attack!')              
  
  
     except Exception as e:
