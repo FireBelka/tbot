@@ -2,11 +2,11 @@ from telebot import TeleBot
 from telebot import types
 
 
-choise =["","",""]
+choise =["","","",""]
 houses = ["house", "summer", "cottage"]
 costs=["15","15-25","25-50","50-100", "100-300", "300+"]
 directions=["moscow","logo","madzel","hrodno","brest","dzer","slyck","other"]
-range=["15km","30km","60km"]
+ranges=["15km","30km","60km"]
 
 def any_user(message: types.Message, bot: TeleBot):
 
@@ -50,12 +50,12 @@ def callback_inline(call, bot: TeleBot):
             elif call.data in directions:  
                 choise[2]=str(call.data)
                 markup = types.InlineKeyboardMarkup(row_width=3)
-                item1 = types.InlineKeyboardButton("До 15км", callback_data=range[0])
-                item2 = types.InlineKeyboardButton("До 30км", callback_data=range[1])
-                item3 = types.InlineKeyboardButton("До 60км", callback_data=range[2])
+                item1 = types.InlineKeyboardButton("До 15км", callback_data=ranges[0])
+                item2 = types.InlineKeyboardButton("До 30км", callback_data=ranges[1])
+                item3 = types.InlineKeyboardButton("До 60км", callback_data=ranges[2])
                 markup.add(item1,item2,item3)
                 bot.send_message(call.message.chat.id, 'Осталось чуть-чуть, какое расстояние от Минска для вас предпочтительно', reply_markup=markup)
-            elif call.data in range:
+            elif call.data in ranges:
                 choise[3]=str(call.data)
                 bot.send_message(call.message.chat.id, "Ваш выбор:\n{0} \n{1} \n{2} \n{3}".format(choise[0],choise[1],choise[2],choise[3])) 
             else :             
