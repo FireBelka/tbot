@@ -50,9 +50,9 @@ def callback_inline(call, bot: TeleBot):
             elif call.data in directions:  
                 choise[2]=str(call.data)
                 markup = types.InlineKeyboardMarkup(row_width=3)
-                item1 = types.InlineKeyboardButton("До 15км", callback_data=directions[0])
-                item2 = types.InlineKeyboardButton("До 30км", callback_data=directions[1])
-                item3 = types.InlineKeyboardButton("До 60км", callback_data=directions[2])
+                item1 = types.InlineKeyboardButton("До 15км", callback_data=range[0])
+                item2 = types.InlineKeyboardButton("До 30км", callback_data=range[1])
+                item3 = types.InlineKeyboardButton("До 60км", callback_data=range[2])
                 markup.add(item1,item2,item3)
                 bot.send_message(call.message.chat.id, 'Осталось чуть-чуть, какое расстояние от Минска для вас предпочтительно', reply_markup=markup)
             elif call.data in range:
