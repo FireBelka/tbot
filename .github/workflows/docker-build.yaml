@@ -28,6 +28,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tgbot:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/domopoisk:latest
           secrets: |
             "telegram_api_token=${{ secrets.TELEGRAM_API_TOKEN }}"
